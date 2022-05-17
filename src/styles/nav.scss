@@ -3,13 +3,16 @@
   text-align: center;
   text-decoration: none;
   color: #eebbc3;
-  margin-top: 20px;
 }
 
 .name-link:hover {
   cursor: pointer;
   text-decoration: underline;
-  
+
+}
+
+.name-link-text {
+  margin-top: 40px;
 }
 
 .nav {
@@ -135,19 +138,22 @@ label {
 
 .navLinks-container {
   list-style: none;
-  transition: var(--bounce),
-    width var(--ease);
-  transition-delay: .3s;
-  transition: width var(--ease), right var(--bounce);
-  transform: translate(var(--tx), 100%) rotate(var(--rt));
+
+
   background: white;
   padding: 10px;
+  opacity: 1;
 
-  &::before,
-  &::after {
-    --tx: -15%;
-    --rt: 45deg;
-    transition: var(--bounce) 0.1s;
-    transition-delay: .1s;
+
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+
+  transform-origin: 0% 0%;
+  transform: translate(-50%, 0);
+
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+
+  &.slide-in {
+    transform: translate(-100%, 0);
   }
 }

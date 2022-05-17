@@ -9,7 +9,11 @@ const Nav = () => {
   return (
     <div className="nav-container">
       <Link className="name-link" to="/works">
-        <h1>Rajkomal Chowdhury</h1>
+        <h1
+          className="name-link-text"
+        >
+          Rajkomal Chowdhury
+        </h1>
       </Link>
       <nav className="nav">
         <input
@@ -28,7 +32,7 @@ const Nav = () => {
           </div>
         </label>
         {openMenu && (
-          <ul className="navLinks-container">
+          <ul className={`navLinks-container $${openMenu ? "slide-in" : null}`}>
             <li>
               <Link to="/">Home</Link>
             </li>

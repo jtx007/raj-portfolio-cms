@@ -35,6 +35,7 @@ collections:
     fields:
       - { name: date, label: Date, widget: datetime }
       - { name: title, label: Title }
-      - { name:  work type, label: type, widget: select, options: ["Architecture", "Apparel", "Objects", "Studies", "Academia"]}
+      - { name: work type, label: type, widget: select, options: ["Architecture", "Apparel", "Objects", "Studies", "Academia"]}
       - { name: main image, label: main image, widget: image}
+      - { name: gallery, label: gallery, summary: '{{fields.image}}', widget: "list", field: {label: Image, name: image, widget: image}}
       - { name: description, label: description, widget: markdown }

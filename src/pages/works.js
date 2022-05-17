@@ -5,11 +5,12 @@ import WorkTile from "../components/WorkTile"
 import "../styles/works.scss"
 
 const Works = ({ data }) => {
-  const [filter, setFilter] = useState("")
+  const [filter, setFilter] = useState()
   const [openFilterPanel, setOpenFilterPanel] = useState(false)
   const works = data.allMarkdownRemark.edges
 
-  console.log(filter)
+  
+
   return (
     // TODO: grid 3 X 3 with images the same size
     // TODO: on hover have project title come up and make picture filter darker
