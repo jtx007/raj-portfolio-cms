@@ -1,0 +1,18 @@
+.work-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "image-gallery work-text"
+  ;
+}
+
+.image-gallery {
+  grid-area: image-gallery
+}
+
+.work-text-container {
+  grid-area: work-text;
+  padding: 10px;
+}
+

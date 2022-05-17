@@ -1,0 +1,38 @@
+.title-name-link {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%)
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.home-name-link {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+  font-size: 64px;
+  text-decoration: none;
+  color: white;
+}
+
+.home-name-link:hover {
+  cursor: pointer;
+  color: #b8c1ec;
+}
+
+h1 {
+  padding: 0;
+  margin: 0;
+}

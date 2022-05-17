@@ -1,0 +1,71 @@
+.works-container {
+  margin-top: 70px;
+  grid-template-columns: auto 1fr;
+  padding: 20px;
+}
+
+.filter-column-container {
+  padding: 10px;
+  width: 50vw;
+  display: flex;
+}
+
+.filter-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  color: #fffffe;
+}
+
+.filter-toggle-btn {
+  background-color: #eebbc3;
+  color: #232946;
+  border: none;
+  border-radius: 10px;
+  width: 100px;
+}
+
+.filter-toggle-btn:hover {
+  cursor: pointer;
+  background-color: rgba(179, 175, 175, 0.478);
+}
+
+.work-main-images {
+  display: flex;
+  gap: 20px;
+}
+
+.work-tile-overlay {
+  position: relative;
+}
+
+
+
+
+.work-details {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.work-tile-overlay:hover .work-details {
+  opacity: 1;
+}
+
+.work-title {
+  color: white;
+  font-size: 36px;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%)
+}
