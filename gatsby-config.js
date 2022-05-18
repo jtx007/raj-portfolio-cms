@@ -7,18 +7,12 @@
 module.exports = {
   /* Your site config here */
   plugins: [
-    `gatsby-plugin-sass`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-image`,
-    `gatsby-plugin-netlify-cms`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-netlify`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`
-      }
+        path: `${__dirname}/src/images`,
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -41,7 +35,12 @@ module.exports = {
         path: `${__dirname}/src/md`,
       },
     },
-
+    {
+      resolve: `gatsby-plugin-netlify-cms-paths`,
+      options: {
+        cmsConfig: `/static/admin/config.yml`
+      }
+    },
     {
       resolve: "gatsby-transformer-remark",
       options: {
@@ -49,7 +48,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-relative-images`,
             options: {
-              staticFolderName: 'static'
+              staticFolderName: "static",
             },
           },
           {
@@ -59,5 +58,11 @@ module.exports = {
         ],
       },
     },
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-netlify-cms`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-netlify`,
   ],
 }
