@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   repo: jtx007/raj-portfolio-cms
   branch: main
-local_backend: true
+
 media_folder: static/assets
 public_folder: /assets
 media_folder_relative: true
