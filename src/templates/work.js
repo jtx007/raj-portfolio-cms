@@ -37,8 +37,6 @@ export const query = graphql`
         date
         work_type
         description
-        info
-        email
         gallery {
           id
           name
