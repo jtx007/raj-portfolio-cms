@@ -24,6 +24,12 @@
   color: white;
 }
 
+
 h2 {
   font-family: var.$header-font;
+}
+
+p:hover {
+  text-decoration: none;
+  cursor:auto;
 }
