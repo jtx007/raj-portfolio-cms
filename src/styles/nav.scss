@@ -1,8 +1,11 @@
+@use "./variables" as var;
+
 .name-link {
   padding: 0;
   text-align: center;
   text-decoration: none;
   color: #eebbc3;
+  font-family: var.$header-font;
 }
 
 .name-link:hover {
@@ -138,7 +141,7 @@ label {
 
 .navLinks-container {
   list-style: none;
-
+  font-family: var.$textbody-font;
 
   background: white;
   padding: 10px;

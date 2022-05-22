@@ -4,11 +4,13 @@ import Layout from "../components/Layout"
 import WorkTile from "../components/WorkTile"
 import "../styles/works.scss"
 
-const Works = ({ data }) => {
-  const [filter, setFilter] = useState()
-  const [openFilterPanel, setOpenFilterPanel] = useState(false)
-  const works = data.allMarkdownRemark.edges
 
+
+const Works = ({ data }) => {
+  const [openFilterPanel, setOpenFilterPanel] = useState(false)
+
+
+  
   
 
   return (
@@ -37,15 +39,8 @@ const Works = ({ data }) => {
 
           </div>
           <div className="work-main-images">
-            {works.map(work => {
-              return (
-                <WorkTile
-                  key={work.node.id}
-                  image={work.node.frontmatter.main_image}
-                  title={work.node.frontmatter.title}
-                  type={work.node.frontmatter.work_type}
-                />
-              )
+            {data.allGraphCmsWorks1.edges.map(edge => {
+              return <WorkTile key={edge.node.id} image={edge.node.mainImage} title={edge.node.title} />
             })}
           </div>
         </div>
@@ -56,23 +51,19 @@ const Works = ({ data }) => {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/works/" } }) {
+    allGraphCmsWorks1 {
       edges {
         node {
-          id
-          frontmatter {
-            title
-            work_type
-            main_image {
-              childImageSharp {
-                gatsbyImageData(width: 720, height: 540)
-              }
-            }
+          mainImage {
+            gatsbyImageData(width: 720, height: 540)
           }
+          title
+          id
         }
       }
     }
   }
 `
+
 
 export default Works

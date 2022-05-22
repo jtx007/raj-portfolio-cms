@@ -1,3 +1,5 @@
+ @use "./variables" as var;
+
 .work-container {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
@@ -13,9 +15,15 @@
   grid-area: image-gallery
 }
 
+
+
 .work-text-container {
   grid-area: work-text;
   padding: 10px;
+  font-family: var.$textbody-font;
   color: white;
 }
 
+h2 {
+  font-family: var.$header-font;
+}

@@ -1,3 +1,5 @@
+@use "./variables" as var;
+
 .title-name-link {
   position: absolute;
   left: 50%;
@@ -25,10 +27,14 @@ body {
   font-size: 64px;
   text-decoration: none;
   color: white;
+  white-space: nowrap;
+  font-family: var.$header-font;
+
 }
 
 .home-name-link:hover {
   cursor: pointer;
   color: #b8c1ec;
+  
 }
 

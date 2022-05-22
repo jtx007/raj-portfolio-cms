@@ -4,16 +4,15 @@
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
 
+const M = require("minimatch")
+
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   /* Your site config here */
   plugins: [
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `assets`,
-        path: `${__dirname}/static/assets`,
-      },
-    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -22,46 +21,22 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: `gatsby-plugin-web-font-loader`,
       options: {
-        name: `works`,
-        path: `${__dirname}/src/works`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `md`,
-        path: `${__dirname}/src/md`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-netlify-cms-paths`,
-      options: {
-        cmsConfig: `/static/admin/config.yml`
+        typekit: {
+          id: process.env.TYPEKIT_ID
+        }
       }
     },
     {
-      resolve: "gatsby-transformer-remark",
+      resolve: `gatsby-source-graphcms`,
       options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-relative-images`,
-            options: {
-              staticFolderName: "static",
-            },
-          },
-          {
-            resolve: `gatsby-remark-images`,
-            options: {},
-          },
-        ],
+        endpoint: process.env.GRAPHCMS_URL,
       },
     },
     `gatsby-plugin-sass`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-image`,
-    `gatsby-plugin-netlify-cms`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-netlify`,
   ],

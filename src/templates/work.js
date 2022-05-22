@@ -4,52 +4,61 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import Layout from "../components/Layout"
 import "../styles/work.scss"
 export default function WorkPost({ data }) {
-  const work = data.markdownRemark
-  console.log("***gallery***",work.frontmatter.gallery)
+
+  const work = data.graphCmsWorks1
+
+  
   return (
     <Layout>
       <div className="work-container">
         <div className="image-gallery">
-        <GatsbyImage
-          alt={work.frontmatter.title}
-          image={work.frontmatter.main_image.childImageSharp.gatsbyImageData}
+          <GatsbyImage
+            alt={work.title}
+            image={work.mainImage.gatsbyImageData}
           />
-        
-        {work.frontmatter.gallery && work.frontmatter.gallery.map((image => {
-         return <GatsbyImage key={image.id} alt={image.name} image={image.childImageSharp.gatsbyImageData} />
-        }))}
+          {work.imageGallery &&
+            work.imageGallery.map(image => {
+              return (
+                <GatsbyImage
+                  key={image.id}
+                  alt={image.title}
+                  image={image.gatsbyImageData}
+                />
+              )
+            })}
         </div>
         <section className="work-text-container">
-          <h1>{work.frontmatter.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: work.html }} />
-          <p>{work.frontmatter.description}</p>
+            <h2>{work.title}</h2>
+            <p>{work.description.text}</p>
         </section>
       </div>
     </Layout>
   )
+
+
+
 }
 
-export const query = graphql`
-  query ($slug: String!) {
-    markdownRemark(frontmatter: { title: { eq: $slug } }) {
-      frontmatter {
-        title
-        date
-        work_type
-        description
-        gallery {
+  export const query = graphql`
+    query ($slug: String!) {
+      graphCmsWorks1(title: { eq: $slug }) {
+        id
+        
+        description {
+          text
+          raw
+          html
+        }
+        imageGallery {
           id
-          name
-          childImageSharp {
-            gatsbyImageData (width: 720, height: 540)
-          }
+          gatsbyImageData(height: 540, width: 720)
         }
-        main_image {
-          childImageSharp {
-            gatsbyImageData (width: 720, height: 540)
-          }
+        mainImage {
+          gatsbyImageData(height: 540, width: 720)
         }
+        title
+        workTypes
+        projectDate
       }
     }
-  }
-`
+  `

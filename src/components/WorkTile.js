@@ -2,6 +2,7 @@ import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 const WorkTile = ({ image, title, type }) => {
+  console.log(image, title, type)
   return (
     <div className="work-tile">
       <div className="work-tile-overlay">
@@ -9,7 +10,7 @@ const WorkTile = ({ image, title, type }) => {
           <GatsbyImage
             imgClassName="work-main-image"
             alt={title}
-            image={image.childImageSharp.gatsbyImageData}
+            image={image.gatsbyImageData}
           />
           <div className="work-details">
             <h3 className="work-title">{title}</h3>

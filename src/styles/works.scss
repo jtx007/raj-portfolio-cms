@@ -1,3 +1,5 @@
+ @use "./variables" as var;
+
 .works-container {
   margin-top: 70px;
   grid-template-columns: auto 1fr;
@@ -20,20 +22,23 @@
   margin: 0;
   height: min-content;
   color: #fffffe;
+  font-family: var.$textbody-font;
 }
 
 .filter-toggle-btn {
-  background-color: #eebbc3;
-  color: #232946;
+  background-color: transparent;
+  font-family: var.$textbody-font;
+  color: #eebbc3;
   border: none;
   border-radius: 30px;
   width: 150px;
   min-width: 150px;
+  
 }
 
 .filter-toggle-btn:hover {
   cursor: pointer;
-  background-color: rgba(179, 175, 175, 0.478);
+  text-decoration: underline;
 }
 
 .work-main-images {
@@ -57,7 +62,9 @@
   top: 35%;
   left: 50%;
   -webkit-transform: translateX(-50%);
-  transform: translateX(-50%)
+  transform: translateX(-50%);
+  font-family: var.$header-font;
+  
 }
 
 .work-tile-overlay {

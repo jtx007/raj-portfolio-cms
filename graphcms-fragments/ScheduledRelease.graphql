@@ -1,0 +1,42 @@
+fragment ScheduledRelease on ScheduledRelease {
+  stage
+  releaseAt
+  isImplicit
+  isActive
+  errorMessage
+  description
+  title
+  publishedAt
+  updatedAt
+  createdAt
+  remoteId: id
+  operations {
+    ... on ScheduledOperation {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  publishedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  updatedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  createdBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  status
+}

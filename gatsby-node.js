@@ -1,36 +1,18 @@
-
-const { fmImagesToRelative } = require("gatsby-remark-relative-images")
-
-
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  fmImagesToRelative(node)
-}
-
-exports.createPages = async function ({node, actions, graphql, getNode }) {
-  
+exports.createPages = async function ({ actions, graphql }) {
   const { data } = await graphql(`
     query {
-      allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/works/" } }) {
+      allGraphCmsWorks1 {
         edges {
           node {
-            frontmatter {
-              title
-              date
-              work_type
-              description
-              main_image {
-                childImageSharp {
-                  gatsbyImageData
-                }
-              }
-            }
+            title
           }
         }
       }
     }
   `)
-  data.allMarkdownRemark.edges.forEach(edge => {
-    const slug = edge.node.frontmatter.title
+  
+  data.allGraphCmsWorks1.edges.forEach(edge => {
+    const slug = edge.node.title
     actions.createPage({
       path: `works/${slug.split(" ").join("")}`,
       component: require.resolve(`./src/templates/work.js`),
