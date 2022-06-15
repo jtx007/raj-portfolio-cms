@@ -1,0 +1,17 @@
+
+@use "./variables" as var;
+
+
+.about-page-container {
+  display: grid;
+  place-items: center;
+  margin-top: 150px;
+  font-size: 24px;
+  padding: 20px;
+}
+
+.about-text {
+  font-family: var.$textbody-font;
+  color: white;
+  width: 75vw;
+}

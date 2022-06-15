@@ -1,8 +1,28 @@
-import React from 'react';
+import React from "react"
+import { graphql } from "gatsby"
+import Layout from "../components/Layout"
+import "../styles/about.scss"
+const About = ({ data }) => {
+  const { text } = data.graphCmsAboutPage.body
 
-
-const About = () => {
-  return <h1>About Page</h1>
+  return (
+    <Layout>
+      <div className="about-page-container">
+        <div className="about-text">{text}</div>
+      </div>
+    </Layout>
+  )
 }
 
-export default About;
+export const query = graphql`
+  query {
+    graphCmsAboutPage {
+      id
+      body {
+        text
+      }
+    }
+  }
+`
+
+export default About
