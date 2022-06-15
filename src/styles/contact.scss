@@ -1,0 +1,65 @@
+@use "./variables" as var;
+
+.form-title {
+  color: white;
+  text-align: center;
+  font-family: var.$textbody-font;
+}
+
+.contact-form-container {
+  display: grid;
+  place-items: center;
+}
+
+.contact-form {
+  width: 90vw;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5px;
+}
+
+.input-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  text-align: center;
+}
+
+
+
+label {
+  font-family: var.$textbody-font;
+  white-space: nowrap;
+}
+
+input {
+  border-radius: 5px;
+  width: 350px;
+  height: 40px;
+}
+
+textarea {
+  height: 150px;
+  width: 350px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+
+.send-button {
+  margin-top: 20px;
+  font-size: 16px;
+  border: none;
+  background-color: #eebbc3;
+  padding: 10px 25px 10px 25px;
+  border-radius: 20px;
+  font-family: var.$header-font;
+}
+
+.send-button:hover {
+  cursor: pointer;
+  background-color: #9d7a80;
+}
