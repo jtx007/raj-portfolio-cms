@@ -2,7 +2,6 @@ import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 const WorkTile = ({ image, title, type }) => {
-  console.log(image, title, type)
   return (
     <div className="work-tile">
       <div className="work-tile-overlay">

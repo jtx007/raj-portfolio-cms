@@ -7,40 +7,110 @@ import "../styles/works.scss"
 
 
 const Works = ({ data }) => {
+  const [works, setWorks] = useState(data.allGraphCmsWorks1.edges)
   const [openFilterPanel, setOpenFilterPanel] = useState(false)
+  const [filterValue, setFilterValue] = useState('')
 
+  const handleSetFilter = (e) => {
+    if (filterValue === e.target.value) {
+      setFilterValue("")
+    } else {
+      setFilterValue(e.target.value)
+    }
 
+  }
   
-  
+
 
   return (
-    // TODO: grid 3 X 3 with images the same size
-    // TODO: on hover have project title come up and make picture filter darker
-
     <>
       <Layout>
         <div className="works-container">
           <div className="filter-column-container">
-            <button onClick={() => setOpenFilterPanel(!openFilterPanel)} className="filter-toggle-btn">
+            <button
+              onClick={() => setOpenFilterPanel(!openFilterPanel)}
+              className="filter-toggle-btn"
+            >
               <h2>Filter</h2>
             </button>
             {openFilterPanel && (
-              // TODO: Put filter options to the left 
-              
-            <div className="filter-list">
-                <p>architecture</p>
-                <p>apparel</p>
-                <p>objects</p>
-                <p>studies</p>
-                <p>academia</p>
-            </div>
-      
+              <div className="filter-list">
+                <button
+                  className={`filter-val-button ${
+                    filterValue === "Architecture"
+                      ? "filter-val-button__selected"
+                      : null
+                  }`}
+                  value="Architecture"
+                  onClick={e => handleSetFilter(e)}
+                >
+                  architecture
+                </button>
+                <button
+                  className={`filter-val-button ${
+                    filterValue === "Apparel"
+                      ? "filter-val-button__selected"
+                      : null
+                  }`}
+                  value="Apparel"
+                  onClick={e => handleSetFilter(e)}
+                >
+                  apparel
+                </button>
+                <button
+                  className={`filter-val-button ${
+                    filterValue === "Objects"
+                      ? "filter-val-button__selected"
+                      : null
+                  }`}
+                  value="Objects"
+                  onClick={e => handleSetFilter(e)}
+                >
+                  objects
+                </button>
+                <button
+                  className={`filter-val-button ${
+                    filterValue === "Studies"
+                      ? "filter-val-button__selected"
+                      : null
+                  }`}
+                  value="Studies"
+                  onClick={e => handleSetFilter(e)}
+                >
+                  studies
+                </button>
+                <button
+                  className={`filter-val-button ${
+                    filterValue === "Academia"
+                      ? "filter-val-button__selected"
+                      : null
+                  }`}
+                  value="Academia"
+                  onClick={e => handleSetFilter(e)}
+                >
+                  academia
+                </button>
+              </div>
             )}
-
           </div>
           <div className="work-main-images">
-            {data.allGraphCmsWorks1.edges.map(edge => {
-              return <WorkTile key={edge.node.id} image={edge.node.mainImage} title={edge.node.title} />
+            {works.filter(work => {
+              if (filterValue) {
+               if (work.node.workTypes === filterValue) {
+                 return work
+               }
+              } else {
+                return work
+              }
+
+            }).map(edge => {
+              return (
+                <WorkTile
+                  key={edge.node.id}
+                  image={edge.node.mainImage}
+                  title={edge.node.title}
+                />
+              )
             })}
           </div>
         </div>
@@ -59,6 +129,7 @@ export const query = graphql`
           }
           title
           id
+          workTypes
         }
       }
     }

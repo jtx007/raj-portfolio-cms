@@ -71,7 +71,21 @@
   position: relative;
 }
 
+.filter-val-button {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  font-family: var.$textbody-font;
+  color: white;
+}
 
+.filter-val-button__selected {
+  border: 1px solid #eebbc3;
+}
+
+.filter-val-button:hover {
+  cursor: pointer;
+}
 
 
 .work-details {
