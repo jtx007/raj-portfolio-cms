@@ -49,6 +49,8 @@ textarea {
 }
 
 
+
+
 .send-button {
   margin-top: 20px;
   font-size: 16px;
@@ -57,9 +59,15 @@ textarea {
   padding: 10px 25px 10px 25px;
   border-radius: 20px;
   font-family: var.$header-font;
+  box-shadow: 0 7px 0 #7d84dfeb;
 }
 
 .send-button:hover {
   cursor: pointer;
   background-color: #9d7a80;
+}
+
+.send-button:active {
+  box-shadow: none;
+  transform: translateY(5px);
 }

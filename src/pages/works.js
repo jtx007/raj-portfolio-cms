@@ -4,23 +4,17 @@ import Layout from "../components/Layout"
 import WorkTile from "../components/WorkTile"
 import "../styles/works.scss"
 
-
-
 const Works = ({ data }) => {
-  const [works, setWorks] = useState(data.allGraphCmsWorks1.edges)
   const [openFilterPanel, setOpenFilterPanel] = useState(false)
-  const [filterValue, setFilterValue] = useState('')
+  const [filterValue, setFilterValue] = useState("")
 
-  const handleSetFilter = (e) => {
+  const handleSetFilter = e => {
     if (filterValue === e.target.value) {
       setFilterValue("")
     } else {
       setFilterValue(e.target.value)
     }
-
   }
-  
-
 
   return (
     <>
@@ -94,24 +88,26 @@ const Works = ({ data }) => {
             )}
           </div>
           <div className="work-main-images">
-            {works.filter(work => {
-              if (filterValue) {
-               if (work.node.workTypes === filterValue) {
-                 return work
-               }
-              } else {
-                return work
-              }
-
-            }).map(edge => {
-              return (
-                <WorkTile
-                  key={edge.node.id}
-                  image={edge.node.mainImage}
-                  title={edge.node.title}
-                />
-              )
-            })}
+            {data.allGraphCmsWorks1.edges
+              .filter(work => {
+                if (filterValue) {
+                  if (work.node.workTypes === filterValue) {
+                    return work
+                  }
+                } else {
+                  return work
+                }
+                return null
+              })
+              .map(edge => {
+                return (
+                  <WorkTile
+                    key={edge.node.id}
+                    image={edge.node.mainImage}
+                    title={edge.node.title}
+                  />
+                )
+              })}
           </div>
         </div>
       </Layout>
@@ -135,6 +131,5 @@ export const query = graphql`
     }
   }
 `
-
 
 export default Works
